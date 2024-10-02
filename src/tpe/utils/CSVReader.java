@@ -8,19 +8,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class CSVReader {
-	private Map<String, Tarea> tareasMap = new HashMap<String, Tarea>();
-	private Map<String, Procesador> procesadoresMap = new HashMap<String, Procesador>();
 
 	public CSVReader() {
 	}
 	
-	public Map<String, Tarea> readTasks(String taskPath) {
+	public void readTasks(String taskPath, Map<String, Tarea> tareas, List<Tarea> criticas, List<Tarea> noCriticas) {
 		
 		// Obtengo una lista con las lineas del archivo
 		// lines.get(0) tiene la primer linea del archivo
@@ -37,12 +33,14 @@ public class CSVReader {
 
 			// Aca instanciar lo que necesiten en base a los datos leidos
 
-			tareasMap.put(id, new Tarea(id, nombre, tiempo, critica, prioridad));
+			tareas.put(id, new Tarea(id, nombre, tiempo, critica, prioridad));
+			if (critica) {
+				criticas.add(new Tarea(id, nombre, tiempo, critica, prioridad));
+			} else noCriticas.add(new Tarea(id, nombre, tiempo, critica, prioridad));
 		}
-		return tareasMap;
 	}
 	
-public Map<String, Procesador> readProcessors(String processorPath) {
+public void readProcessors(String processorPath, Map<String, Procesador> procesadores) {
 		
 		// Obtengo una lista con las lineas del archivo
 		// lines.get(0) tiene la primer linea del archivo
@@ -58,9 +56,8 @@ public Map<String, Procesador> readProcessors(String processorPath) {
 
 			// Aca instanciar lo que necesiten en base a los datos leidos
 
-			procesadoresMap.put(id, new Procesador(id, codigo, refrigerado, anio));
+			procesadores.put(id, new Procesador(id, codigo, refrigerado, anio));
 		}
-		return procesadoresMap;
 	}
 
 	private ArrayList<String[]> readContent(String path) {

@@ -2,7 +2,11 @@ package tpe;
 
 import tpe.utils.CSVReader;
 
+import javax.sound.sampled.Line;
+import javax.swing.*;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,7 +18,8 @@ import java.util.Map;
 public class Servicios {
 
 	private Map<String, Tarea> tareasMap = new HashMap<String, Tarea>();
-	private Map<String, Procesador> procesadoresMap = new HashMap<String, Procesador>();
+	private List<Tarea> criticasList = new LinkedList <>();
+	private List <Tarea> noCriticasList = new LinkedList <>();
 	/*
      * Expresar la complejidad temporal del constructor.
      */
@@ -25,8 +30,7 @@ public class Servicios {
 	public Servicios(String pathProcesadores, String pathTareas)
 	{
 		CSVReader reader = new CSVReader();
-		this.procesadoresMap = reader.readProcessors(pathProcesadores);
-		this.tareasMap = reader.readTasks(pathTareas);
+		reader.readTasks(pathTareas, tareasMap, criticasList, noCriticasList);
 	}
 
 	/*
@@ -40,11 +44,14 @@ public class Servicios {
 
     /*
      * Expresar la complejidad temporal del servicio 2.
+     * Si no me equivoco es O(1) A CHECKEAR
      */
 
-	/* public List<Tarea> servicio2(boolean esCritica) {
-	return null;
-	} */
+	public List<Tarea> servicio2(boolean esCritica) {
+	if (esCritica){
+		return criticasList;
+	} else return noCriticasList;
+	}
 
     /*
      * Expresar la complejidad temporal del servicio 3.
