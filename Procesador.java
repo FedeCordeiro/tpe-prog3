@@ -25,4 +25,8 @@ public class Procesador {
     public int getAnioFuncionamiento() {
         return anioFuncionamiento;
     }
+
+    public boolean esRefrigerado() {
+        return estaRefrigerado;
+    }
 }

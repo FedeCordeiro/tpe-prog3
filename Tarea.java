@@ -40,4 +40,8 @@ public class Tarea {
                 ", nivelPrioridad=" + nivelPrioridad +
                 '}';
     }
+
+    public boolean esCritica() {
+        return esCritica;
+    }
 }
