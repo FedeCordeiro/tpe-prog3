@@ -21,4 +21,9 @@ public class Solucion {
         return solucion;
     }
 
+    public Iterable<Object> getProcesadores() {
+    }
+
+    public int getTiempoEjecucion() {
+    }
 }

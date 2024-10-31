@@ -1,4 +1,7 @@
 package tpe;
+
+import java.util.Collection;
+
 public class Procesador {
     private String id;
     private String codigo;
@@ -18,15 +21,23 @@ public class Procesador {
         return codigo;
     }
 
-    public boolean isEstaRefrigerado() {
-        return estaRefrigerado;
-    }
-
     public int getAnioFuncionamiento() {
         return anioFuncionamiento;
     }
 
     public boolean esRefrigerado() {
         return estaRefrigerado;
+    }
+
+    public void add(Tarea t) {
+    }
+
+    public void delete(Tarea t) {
+    }
+
+    public Collection<Object> getTareasCriticas() {
+    }
+
+    public int getTiempoEjecucion() {
     }
 }

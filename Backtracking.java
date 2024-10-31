@@ -1,6 +1,7 @@
 package tpe;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Backtracking {
 
@@ -19,12 +20,12 @@ public class Backtracking {
     }
 
     public Solucion asignarTareasBack(int tiempoEjecucion){
-        if(procesadores.size()*2<this.tareasCriticas.size() || procesadores.size()==0 || tareas.size()==0){
+        if(procesadores.size()*2 < this.tareasCriticas.size() || procesadores.size()==0 || tareas.size()==0){
             return null;
         }else{
             this.tiempoEjecucion = tiempoEjecucion;
             Solucion solParcial = new Solucion(this.procesadores);
-            sol=null; //reiniciamos la variable
+            solucion=null; //reiniciamos la variable
             int index=0;
             return asignarTareasBack(solParcial, index);
         }
@@ -32,7 +33,7 @@ public class Backtracking {
 
     private Solucion asignarTareasBack(Solucion solParcial, int index){
         if(tareas.size()==index){
-            if(this.solucion == null || solParcial.getTiempoEjecucion()<sol.getTiempoEjecucion()){
+            if(this.solucion == null || solParcial.getTiempoEjecucion()<solucion.getTiempoEjecucion()){
                 solucion = solParcial.copy();// borrar la solucion anterior y copiar la nueva
                 return solucion;
             }
