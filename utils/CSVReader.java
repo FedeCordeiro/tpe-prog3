@@ -40,7 +40,7 @@ public class CSVReader {
 		}
 	}
 	
-public void readProcessors(String processorPath, Map<String, Procesador> procesadores) {
+public void readProcessors(String processorPath, List<Procesador> procesadores) {
 		
 		// Obtengo una lista con las lineas del archivo
 		// lines.get(0) tiene la primer linea del archivo
@@ -56,7 +56,7 @@ public void readProcessors(String processorPath, Map<String, Procesador> procesa
 
 			// Aca instanciar lo que necesiten en base a los datos leidos
 
-			procesadores.put(id, new Procesador(id, codigo, refrigerado, anio));
+			procesadores.add(new Procesador(id, codigo, refrigerado, anio));
 		}
 	}
 

@@ -18,15 +18,19 @@ public class Tarea {
     public String getId() {
         return id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public int getTiempoEjecucion() {
         return tiempoEjecucion;
     }
+
     public boolean isEsCritica() {
         return esCritica;
     }
+
     public int getNivelPrioridad() {
         return nivelPrioridad;
     }
@@ -43,5 +47,9 @@ public class Tarea {
 
     public boolean esCritica() {
         return esCritica;
+    }
+
+    public Tarea copy(){
+        return new Tarea(this.id,this.nombre, this.tiempoEjecucion, this.esCritica, this.nivelPrioridad);
     }
 }
