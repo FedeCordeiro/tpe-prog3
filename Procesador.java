@@ -89,4 +89,12 @@ public class Procesador {
         }
         return sb.toString();
     }
+
+    public boolean puedeAsignarse(Tarea t, int tiempo) {
+        if ((t.esCritica() && this.getTareasCriticas().size() < 2 || !t.esCritica())) {
+            if ((!this.esRefrigerado() && this.getTiempoProcesamiento() + t.getTiempoEjecucion() <= tiempo || this.esRefrigerado())) {
+                return true;
+            }
+        } return false;
+    }
 }

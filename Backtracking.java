@@ -45,8 +45,7 @@ public class Backtracking {
             Tarea t = tareas.get(index);
             while(it.hasNext()){
                 Procesador p = it.next();
-                if((t.esCritica() && p.getTareasCriticas().size()<2 || !t.esCritica())){
-                    if ((!p.esRefrigerado() && p.getTiempoProcesamiento()+t.getTiempoEjecucion()<=this.tiempoEjecucion || p.esRefrigerado())) {
+                if (p.puedeAsignarse(t, tiempoEjecucion)){
                         if (p.getTiempoProcesamiento() + t.getTiempoEjecucion() < this.solucion.getTiempoEjecucion() || solucion.getTiempoEjecucion() == 0) {
                             p.add(t);
                             asignarTareasBack(solParcial, index + 1);
@@ -57,6 +56,3 @@ public class Backtracking {
             }
         }
     }
-
-
-}
