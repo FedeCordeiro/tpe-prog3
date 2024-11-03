@@ -1,6 +1,7 @@
 package tpe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,11 +12,11 @@ public class Greedy {
     private List<Tarea> tareas;
     private int tiempoEjecucion;
 
-    public Greedy(List<Procesador> procesadores, List<Tarea> tareas) {
+    public Greedy(List<Procesador> procesadores, List<Tarea> Critica, List<Tarea> Nocritica) {
         this.respuesta = new Solucion();
-        this.solucionActual = new Solucion();
         this.procesadores = procesadores;
-        this.tareas = tareas;
+        this.solucionActual = new Solucion(this.procesadores, 0);
+        this.tareas = ordenarTareasCriticasYTiempo(Critica, Nocritica);
         this.tiempoEjecucion = 0;
     }
 
@@ -23,18 +24,15 @@ public class Greedy {
         int index = 0;
         this.tiempoEjecucion = tiempoEjecucion;
 
-        ordenarTareasCriticasYTiempo(tareas);
-
         // Recorremos cada tarea para asignarla a un procesador válido.
         for (Tarea tarea : tareas) {
             if (index == procesadores.size()) {
                 index = 0;
             }
             while (index < procesadores.size()) {
-                Procesador procesadorAsignado = procesadores.get(index);
+                Procesador procesadorAsignado = solucionActual.getProcesadores().get(index);
                 if (procesadorAsignado.puedeAsignarse(tarea, tiempoEjecucion)) {
                     procesadorAsignado.add(tarea);
-                    solucionActual.addProcesador(procesadorAsignado);
                 }
                 index++;
             }
@@ -45,8 +43,14 @@ public class Greedy {
         return respuesta;
     }
 
-    private void ordenarTareasCriticasYTiempo(List<Tarea> tareas) {
+    private List<Tarea> ordenarTareasCriticasYTiempo(List<Tarea> critica, List<Tarea> noCritica) {
+        List<Tarea> resultado = new ArrayList<>(critica);
 
+        resultado.sort(new TareaComparator().reversed());
+        noCritica.sort(new TareaComparator().reversed());
+
+        resultado.addAll(noCritica);
+        return resultado;
     }
 
 }

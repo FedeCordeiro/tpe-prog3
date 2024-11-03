@@ -32,9 +32,13 @@ public class Main {
 		lector.readProcessors("./datasets/Procesadores.csv", procesadores);
 		List<Tarea> noCritica = servicios.servicio2(false);
 		List<Tarea> critica = servicios.servicio2(true);
-		Backtracking test = new Backtracking(procesadores, critica, noCritica);
+//		Backtracking test = new Backtracking(procesadores, critica, noCritica);
+//
+//		Solucion solucionado = test.asignarTareasBack(5);
+//		System.out.println(solucionado);
 
-		Solucion solucionado = test.asignarTareasBack(5);
+		Greedy g = new Greedy(procesadores, critica, noCritica);
+		Solucion solucionado = g.asignarTareasGreedy(50);
 		System.out.println(solucionado);
 
 	}
