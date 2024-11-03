@@ -8,11 +8,13 @@ public class Solucion {
     private List<Procesador> procesadores;
     private int tiempo;
     private int estadosGenerados;
+    private int candidatosConsiderados;
 
     public Solucion(){
         procesadores = new ArrayList<>();
         tiempo = 0;
         estadosGenerados = 0;
+        candidatosConsiderados = 0;
     }
 
     public Solucion(List<Procesador> procesadores , int tiempo) {
@@ -23,10 +25,20 @@ public class Solucion {
     public Solucion copy(){ // si agregamos atributos tenerlo en cuenta
         Solucion solucion = new Solucion();
         solucion.setTiempo(this.tiempo);
+        solucion.setCandidatos(this.candidatosConsiderados);
+        solucion.setEstadosGenerados(this.estadosGenerados);
         for (Procesador p : procesadores){
             solucion.addProcesador(p.copy());
         }
         return solucion;
+    }
+
+    private void setEstadosGenerados(int estadosGenerados) {
+        this.estadosGenerados = estadosGenerados;
+    }
+
+    private void setCandidatos(int candidatosConsiderados) {
+        this.candidatosConsiderados = candidatosConsiderados;
     }
 
     public List<Procesador> getProcesadores() {
@@ -64,6 +76,10 @@ public class Solucion {
         estadosGenerados++;
     }
 
+    public void incrementarCandidatos(){
+        candidatosConsiderados++;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -71,7 +87,8 @@ public class Solucion {
             sb.append(procesador.toString()).append("\n");
         }
         sb.append("TIEMPO TOTAL: ").append(tiempo).append("\n");
-        sb.append("ESTADOS GENERADOS: ").append(estadosGenerados);
+        sb.append("ESTADOS GENERADOS - BACKTRACKING: ").append(estadosGenerados).append("\n");
+        sb.append("CANDIDATOS CONSIDERADOS - GREEDY: ").append(candidatosConsiderados).append("\n");
         return sb.toString();
     }
 }

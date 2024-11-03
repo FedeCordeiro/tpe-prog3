@@ -26,6 +26,7 @@ public class Greedy {
 
         // Recorremos cada tarea para asignarla a un procesador válido.
         for (Tarea tarea : tareas) {
+            solucionActual.incrementarCandidatos();
             if (index == procesadores.size()) {
                 index = 0;
             }
@@ -33,11 +34,13 @@ public class Greedy {
                 Procesador procesadorAsignado = solucionActual.getProcesadores().get(index);
                 if (procesadorAsignado.puedeAsignarse(tarea, tiempoEjecucion)) {
                     procesadorAsignado.add(tarea);
+                    index++;
+                    break;
                 }
-                index++;
+                else {
+                    index++;
+                }
             }
-
-
         }
         respuesta = solucionActual.copy();
         return respuesta;
