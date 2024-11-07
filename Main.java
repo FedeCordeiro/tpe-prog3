@@ -8,22 +8,22 @@ public class Main {
 	public static void main(String args[]) {
 		Servicios servicios = new Servicios("./datasets/Procesadores.csv", "./datasets/Tareas.csv");
 
-//		//Dado un identificador de tarea obtener toda la información de la tarea asociada.
+		//Dado un identificador de tarea obtener toda la información de la tarea asociada.
 //		System.out.println("Informacion de tarea:");
 //		System.out.println(servicios.servicio1("T1"));
 //		System.out.println();
 //
-//		//Ver todas las tareas críticas
+		//Ver todas las tareas críticas
 //		System.out.println("Lista de tareas criticas:");
 //		System.out.println(servicios.servicio2(true));
 //		System.out.println();
 //
-//		//Ver todas las tareas NO críticas
+		//Ver todas las tareas NO críticas
 //		System.out.println("Lista de tareas NO criticas:");
 //		System.out.println(servicios.servicio2(false));
 //		System.out.println();
 //
-//		//Obtener todas las tareas entre dos niveles de prioridad
+		//Obtener todas las tareas entre dos niveles de prioridad
 //		System.out.println("Lista de tareas por rango:");
 //		System.out.println(servicios.servicio3(10,50));
 
@@ -35,11 +35,16 @@ public class Main {
 		Backtracking test = new Backtracking(procesadores, critica, noCritica);
 
 		Solucion solucionado = test.asignarTareasBack(5);
+
+		System.out.println();
 		System.out.println("---BACKTRACKING---");
 		System.out.println(solucionado);
 
+
+
 		Greedy g = new Greedy(procesadores, critica, noCritica);
 		Solucion solucionado1 = g.asignarTareasGreedy(50);
+		System.out.println();
 		System.out.println("---GREEDY---");
 		System.out.println(solucionado1);
 

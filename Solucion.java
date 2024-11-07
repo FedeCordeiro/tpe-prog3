@@ -22,7 +22,7 @@ public class Solucion {
         this.tiempo = tiempo;
     }
 
-    public Solucion copy(){ // si agregamos atributos tenerlo en cuenta
+    public Solucion copy(){
         Solucion solucion = new Solucion();
         solucion.setTiempo(this.tiempo);
         solucion.setCandidatos(this.candidatosConsiderados);
@@ -45,7 +45,8 @@ public class Solucion {
         return procesadores;
     }
 
-    public int getTiempoEjecucion() { //retornar el tiempo de ejecucion mayor entre los procesadores
+    //Retornar el tiempo de ejecucion mayor entre los procesadores
+    public int getTiempoEjecucion() {
         int tiempoEjecucion = 0;
         for (Procesador p : procesadores) {
             if (p.getTiempoProcesamiento() > tiempoEjecucion){
