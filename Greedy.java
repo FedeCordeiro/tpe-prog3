@@ -19,22 +19,22 @@ public class Greedy {
     }
 
     /**
-     * Estrategia Greedy (Algoritmo Voraz):
+     * Estrategia Greedy
      * Ordena las tareas en función de su tiempo de ejecución, de forma descendente (de mayor a menor).
-     * Recorre las tareas en orden y busca un procesador adecuado.
-     * Las tareas se asignan al procesador que tiene la menor carga si no se puede cumplir tiempoMax.
+     * Recorre las tareas en orden y busca un procesador adecuado para asignarlas.
+     * En el caso que una tarea no se pueda asignar por tiempoMax, se busca el procesador con menor carga.
      */
 
     public Solucion asignarTareasGreedy(int tiempoEjecucion) {
         this.tiempoEjecucion = tiempoEjecucion;
 
         for (Tarea tarea : tareas) {
-            solucionActual.incrementarCandidatos();
             boolean tareaAsignada = false;
             int index = 0;
 
             // Intenta asignar la tarea a un procesador que cumpla con el tiempo máximo permitido
             while (index < procesadores.size() && !tareaAsignada) {
+                solucionActual.incrementarCandidatos();
                 Procesador procesadorActual = solucionActual.getProcesadores().get(index);
 
                 if (procesadorActual.puedeAsignarse(tarea, tiempoEjecucion) && procesadorActual.getTiempoProcesamiento() + tarea.getTiempoEjecucion() <= solucionActual.getTiempoEjecucion()) {
@@ -58,6 +58,7 @@ public class Greedy {
                 // Asignar al procesador de menor carga si se encuentra uno adecuado
                 if (procesadorMenorCarga != null) {
                     procesadorMenorCarga.add(tarea);
+                    solucionActual.incrementarCandidatos();
                 }
             }
         }

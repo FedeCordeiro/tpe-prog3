@@ -87,7 +87,7 @@ public class Solucion {
         for (Procesador procesador : procesadores) {
             sb.append(procesador.toString()).append("\n");
         }
-        sb.append("TIEMPO TOTAL: ").append(tiempo).append("\n");
+        sb.append("TIEMPO TOTAL DEL MAYOR PROCESADOR: ").append(tiempo).append("\n");
         sb.append("ESTADOS GENERADOS - BACKTRACKING: ").append(estadosGenerados).append("\n");
         sb.append("CANDIDATOS CONSIDERADOS - GREEDY: ").append(candidatosConsiderados).append("\n");
         return sb.toString();
