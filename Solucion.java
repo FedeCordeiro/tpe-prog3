@@ -87,7 +87,11 @@ public class Solucion {
         for (Procesador procesador : procesadores) {
             sb.append(procesador.toString()).append("\n");
         }
-        sb.append("TIEMPO TOTAL DEL MAYOR PROCESADOR: ").append(tiempo).append("\n");
+
+        // Asegúrate de obtener el tiempo de ejecución correcto
+        int tiempoEjecucion = getTiempoEjecucion();
+        sb.append("TIEMPO TOTAL DEL MAYOR PROCESADOR: ").append(tiempoEjecucion).append("\n");
+
         sb.append("ESTADOS GENERADOS - BACKTRACKING: ").append(estadosGenerados).append("\n");
         sb.append("CANDIDATOS CONSIDERADOS - GREEDY: ").append(candidatosConsiderados).append("\n");
         return sb.toString();

@@ -35,19 +35,26 @@ public class Main {
 		List<Tarea> critica = servicios.servicio2(true);
 		Backtracking test = new Backtracking(procesadores, critica, noCritica);
 
-		Solucion solucionado = test.asignarTareasBack(100);
+		Solucion solucionado = test.asignarTareasBack(50);
 
 		System.out.println();
 		System.out.println("---BACKTRACKING---");
-		System.out.println(solucionado);
-
+		if (solucionado == null) {
+			System.out.println("No hay una solucion valida para lista de tareas");
+		}else {
+			System.out.println(solucionado);
+		}
 
 
 		Greedy g = new Greedy(procesadores, critica, noCritica);
 		Solucion solucionado1 = g.asignarTareasGreedy(50);
 		System.out.println();
 		System.out.println("---GREEDY---");
-		System.out.println(solucionado1);
+		if (solucionado1 == null) {
+			System.out.println("No hay una solucion valida para lista de tareas");
+		}else {
+			System.out.println(solucionado1);
+		}
 
 	}
 
