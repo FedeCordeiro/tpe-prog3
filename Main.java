@@ -40,8 +40,9 @@ public class Main {
 		System.out.println();
 		System.out.println("---BACKTRACKING---");
 		if (solucionado == null) {
-			System.out.println("No hay una solucion valida para lista de tareas");
-		}else {
+			System.out.println("No hay una solucion valida para lista de tareas, utilizando Backtracking");
+		}
+		else {
 			System.out.println(solucionado);
 		}
 
@@ -51,8 +52,9 @@ public class Main {
 		System.out.println();
 		System.out.println("---GREEDY---");
 		if (solucionado1 == null) {
-			System.out.println("No hay una solucion valida para lista de tareas");
-		}else {
+			System.out.println("No hay una solucion valida para lista de tareas, utilizando Greedy");
+		}
+		else {
 			System.out.println(solucionado1);
 		}
 

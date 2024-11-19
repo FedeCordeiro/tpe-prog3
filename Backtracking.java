@@ -37,7 +37,7 @@ public class Backtracking {
         } else {
             this.tiempoEjecucion = tiempoEjecucion;
             Solucion solParcial = new Solucion(this.procesadores, 0);
-            this.solucion = new Solucion(); //Reiniciar solucion
+            this.solucion = new Solucion(); // Reiniciar solucion
             int index = 0;
             asignarTareasBack(solParcial, index);
             return this.solucion;
@@ -48,7 +48,7 @@ public class Backtracking {
         solucion.incrementarGenerados();
         if (tareas.size() == index) {
             if (this.solucion.getTiempoEjecucion() == 0 || solParcial.getTiempoEjecucion() < solucion.getTiempoEjecucion()) {
-                solucion = solParcial.copy(); // Borrar solucion anterior y copiar la nueva
+                solucion = solParcial.copy();
             }
         } else {
             Tarea t = tareas.get(index);
@@ -65,7 +65,7 @@ public class Backtracking {
                 }
             }
 
-            //Modificacion - Si no se pudo asignar la tarea, salimos
+            // Modificacion - Si no se pudo asignar la tarea, hacemos un return y queda en null
             if (!sePudoAsignar) {
                 return;
             }
