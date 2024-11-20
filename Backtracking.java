@@ -65,7 +65,7 @@ public class Backtracking {
                 }
             }
 
-            // Modificacion - Si no se pudo asignar la tarea, hacemos un return y queda en null
+            // Modificación - Si no se pudo asignar la tarea, hacemos un return y queda en null
             if (!sePudoAsignar) {
                 return;
             }

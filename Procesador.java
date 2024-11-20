@@ -57,12 +57,12 @@ public class Procesador {
     }
 
     public int getTiempoProcesamiento() {
-        return tiempoTotalEjecucion; // Modificacion - Devuelve el tiempo acumulado
+        return tiempoTotalEjecucion; // Modificación - Devuelve el tiempo acumulado
     }
 
 
     public int getCantidadTareasCriticas() {
-        return cantidadTareasCriticas; // Modificacion - Devuelve el contador acumulado
+        return cantidadTareasCriticas; // Modificación - Devuelve el contador acumulado
     }
 
     public boolean contieneTarea(Tarea t) {

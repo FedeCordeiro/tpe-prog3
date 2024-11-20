@@ -23,9 +23,9 @@ public class Greedy {
      * 1.Ordena las tareas en función de su tiempo de ejecución, de forma descendente (de mayor a menor).
      * 2.Recorre las tareas en orden y se manejan los procesadores a traves de un indice.
      * 3.En el caso que una tarea no se pueda asignar porque superaria el tiempoMax, se busca el procesador con menor carga y valido para asignar la tarea.
-     * 4.Siempre y cuando se pueda asignar al procesador con menor cargg
      */
     public Solucion asignarTareasGreedy(int tiempoEjecucion) {
+        // Modificación - Se agrega control y se retorna null
         if (procesadores.isEmpty() || tareas.isEmpty()) {
             return null;
         }
@@ -65,6 +65,7 @@ public class Greedy {
                         solucionActual.incrementarCandidatos();
                     }
                     else {
+                        // Modificación - Si no se puede asignar a ningun procesador, retorna null
                         return null;
                     }
                 }
