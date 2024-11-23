@@ -40,7 +40,13 @@ public class Backtracking {
             this.solucion = new Solucion(); // Reiniciar solucion
             int index = 0;
             asignarTareasBack(solParcial, index);
-            return this.solucion;
+            // Modificación - Se agrega condición para cuando no hay una solución posible
+            if (solucion.getTiempoEjecucion() == 0) {
+              return null;
+            }
+            else {
+                return this.solucion;
+            }
         }
     }
 
@@ -52,22 +58,15 @@ public class Backtracking {
             }
         } else {
             Tarea t = tareas.get(index);
-            boolean sePudoAsignar = false;
 
             for (Procesador p : solParcial.getProcesadores()) {
                 if (p.puedeAsignarse(t, tiempoEjecucion)) {
                     if (p.getTiempoProcesamiento() + t.getTiempoEjecucion() < this.solucion.getTiempoEjecucion() || solucion.getTiempoEjecucion() == 0) {
                         p.add(t);
-                        sePudoAsignar = true;
                         asignarTareasBack(solParcial, index + 1);
                         p.delete(t);
                     }
                 }
-            }
-
-            // Modificación - Si no se pudo asignar la tarea, hacemos un return y queda en null
-            if (!sePudoAsignar) {
-                return;
             }
         }
     }

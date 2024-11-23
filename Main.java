@@ -35,7 +35,7 @@ public class Main {
 		List<Tarea> critica = servicios.servicio2(true);
 		Backtracking test = new Backtracking(procesadores, critica, noCritica);
 
-		Solucion solucionado = test.asignarTareasBack(50);
+		Solucion solucionado = test.asignarTareasBack(80);
 
 		System.out.println();
 		System.out.println("---BACKTRACKING---");
@@ -49,7 +49,7 @@ public class Main {
 
 
 		Greedy g = new Greedy(procesadores, critica, noCritica);
-		Solucion solucionado1 = g.asignarTareasGreedy(50);
+		Solucion solucionado1 = g.asignarTareasGreedy(80);
 		System.out.println();
 		System.out.println("---GREEDY---");
 		// Modificación - Si la solución es null, se imprime mensaje de aviso
